@@ -81,7 +81,7 @@ const Features = () => {
         </svg>
       ),
       title: "Secure Transactions",
-      desc: "Enjoy peace of mind with CopyCube’s state-of-the-art security features, ensuring your funds and data are safe.",
+      desc: "Enjoy peace of mind with ProfitMirrow's state-of-the-art security features, ensuring your funds and data are safe.",
     },
     {
       icon: (
@@ -137,11 +137,11 @@ const Features = () => {
         >
           <div className="max-w-xl mx-auto text-center">
             <h2 className="text-gray-50 text-3xl font-semibold sm:text-4xl">
-              Start growing your Finance with with CopyCube
+              Start growing your Finance with with ProfitMirow
             </h2>
             <p className="mt-3">
               Take control of your financial future and watch your wealth grow
-              steadily with CopyCube, the platform designed to turn your
+              steadily with ProfitMirow, the platform designed to turn your
               investments into opportunities
             </p>
           </div>

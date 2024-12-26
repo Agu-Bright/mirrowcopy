@@ -21,7 +21,7 @@ const VisualFeatures = () => {
       <div className="custom-screen text-gray-300">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-gray-50 text-3xl font-semibold sm:text-4xl">
-            Take your Forex Trading to the next level with CopyCube
+            Take your Forex Trading to the next level with ProfitMirrow
           </h2>
           <p className="mt-3">
             Unlock the full potential of your forex trading journey with Forex

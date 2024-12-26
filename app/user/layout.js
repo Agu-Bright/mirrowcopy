@@ -7,7 +7,7 @@ import LiveChatScript from "@components/LiveChat";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "CopyCube",
+  title: "ProfitMirrow",
   description: "Invest in crypto and stock assets",
 };
 

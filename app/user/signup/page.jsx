@@ -298,7 +298,7 @@ function page() {
                           fontSize: "1.2em",
                         }}
                       >
-                        CopyCube
+                        ProfitMirow
                       </span>
                     </h1>
                     <h5 style={{ color: "#d9d6d6", fontSize: "0.9em" }}>
@@ -649,7 +649,7 @@ function page() {
                         </svg>
                       </div>
                     </div> */}
-                    
+
                     <div className="mt-8">
                       <label className="text-white text-xs block mb-2">
                         Password

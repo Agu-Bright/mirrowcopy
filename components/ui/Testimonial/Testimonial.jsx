@@ -16,7 +16,7 @@ const Testimonial = () => {
       name: "David M.",
       title: "Professional Trader",
       quote:
-        "CopyCube has revolutionized the way I trade. The automated profit tracking is a game-changer!",
+        "ProfitMirrow has revolutionized the way I trade. The automated profit tracking is a game-changer!",
     },
     {
       avatar: user2,
@@ -37,7 +37,7 @@ const Testimonial = () => {
       name: "Emma K.",
       title: "New Investor",
       quote:
-        "CopyCube's user-friendly interface makes it so easy to manage my portfolio, even on the go.",
+        "ProfitMirrow's user-friendly interface makes it so easy to manage my portfolio, even on the go.",
     },
     {
       avatar: user5,
@@ -51,7 +51,7 @@ const Testimonial = () => {
       name: "Philip L.",
       title: "Seasoned Investor",
       quote:
-        "CopyCube truly takes forex trading to the next level. My returns have never been this consistent.",
+        "ProfitMirrow truly takes forex trading to the next level. My returns have never been this consistent.",
     },
   ];
 
@@ -60,7 +60,7 @@ const Testimonial = () => {
       <div id="testimonials" className="custom-screen text-gray-300">
         <div className="max-w-2xl text-center md:mx-auto">
           <h2 className="text-gray-50 text-3xl font-semibold sm:text-4xl">
-            CopyCube is loved by the best Forex Traders around the world
+          ProfitMirrow is loved by the best Forex Traders around the world
           </h2>
         </div>
         <GradientWrapper

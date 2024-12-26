@@ -5,8 +5,8 @@ export const transporter = nodemailer.createTransport({
   port: 465,
   secure: true, // Use `true` for port 465, `false` for all other ports
   auth: {
-    user: "support@CopyCube.net",
-    pass: "@CopyCubeSuppport12",
+    user: "support@ProfitMirrow.com",
+    pass: "@ProfitMirrowSuppport12",
   },
 });
 

@@ -8,8 +8,8 @@ import LiveChatScript from "@components/LiveChat";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "CopyCube",
-  description: "CopyCube",
+  title: "ProfitMirrow",
+  description: "ProfitMirrow",
 };
 
 export default function RootLayout({ children }) {
