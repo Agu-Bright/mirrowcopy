@@ -87,7 +87,7 @@ export default function Home() {
       <NavPage>
         <Box sx={{ height: "100%" }}>
           <Stack direction="column" justifyContent="space-between">
-            <Box className="flex align-middle ">
+            {/* <Box className="flex align-middle ">
               <Image
                 src="/img/check.png"
                 alt="deposit"
@@ -98,209 +98,66 @@ export default function Home() {
               <Typography className="text-white text-4xl font-extrabold">
                 Expert Traders{" "}
               </Typography>
-            </Box>
-            <Box className="w-[100%] mt-4">
-              <Typography>
-                The Grin blockchain has presented significant technical
-                challenges
-              </Typography>
+            </Box> */}
 
-              {active === null && (
-                <>
-                  {loading && (
-                    <Box
-                      sx={{
-                        width: "100%",
-                        height: "70vh",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <CircularProgress size={20} sx={{ color: "white" }} />
-                    </Box>
-                  )}
-                  {!loading && traders.length === 0 && (
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: "100%",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: "50%",
-                          height: "70vh",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <Image
-                          src="/img/empty.png"
-                          alt="empty"
-                          width={200}
-                          height={200}
-                        />
-                        <Typography className="text-white">
-                          You currently have not uploaded any trader
-                        </Typography>
-                        <Button className="mt-8" onClick={() => setOpen(true)}>
-                          Create Trader
-                        </Button>
-                      </Box>
-                    </Box>
-                  )}
-                  {traders.length > 0 && (
-                    <Box>
-                      <Box sx={{ width: "100%" }}>
-                        <Grid
-                          container
-                          rowSpacing={2}
-                          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-                        >
-                          {traders.map((item) => (
-                            <Grid item xs={6} md={3}>
-                              <TraderCard
-                                key={item?._id}
-                                trader={item}
-                                setActive={setActive}
-                              />
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </Box>
-                    </Box>
-                  )}
-                </>
-              )}
-              {active && (
-                <>
-                  <Stack direction="row" justifyContent="space-between">
-                    <IconButton onClick={() => setActive(null)}>
-                      <ArrowBackIosNewIcon sx={{ color: "white" }} />
-                    </IconButton>
-                    <div></div>
-                  </Stack>
-                  <Box className="mt-5 rounded-xl min-h-[60vh] sm:min-h-[50vh] mb-5 relative bg-[#242731] z-10">
-                    <Box
-                      className="absolute left-1/2 transform -translate-x-1/2 rounded-xl h-[100%] w-[99%] bottom-[-10px] z-0"
-                      sx={{
-                        background: "#21242D",
-                        padding: { md: "30px", xs: "10px" },
-                      }}
-                    >
-                      <Stack
-                        direction="column"
-                        justifyContent="space-between"
-                        sx={{ height: "100%" }}
-                      >
-                        <Stack
-                          direction={{ md: "row", xs: "column" }}
-                          justifyContent="space-between"
-                          sx={{ height: "50%" }}
-                        >
-                          <Box sx={{ width: { md: "50%", xs: "100%" } }}>
-                            <Typography className="text-white text-3xl font-semibold">
-                              {active?.name} {`(${active?.location})`}
-                            </Typography>
-                            <Typography className="text-white text-4xl font-semibold mt-3">
-                              {/* {formatMoney(myWallet?.balance)} */}
-                              <Avatar src={active?.image} alt="image" />
-                            </Typography>
-                            <Typography
-                              sx={{ color: "#808191" }}
-                              className="text-4xl font-semibold mt-3"
-                            >
-                              Followers: {active?.followers}
-                              {/* {btc} BTC */}
-                            </Typography>
-                          </Box>
-                          <Box
-                            sx={{
-                              width: { md: "50%", xs: "100%" },
-                              marginTop: { md: "", xs: "10px" },
-                            }}
-                            className="px-4  md:px-0"
-                          >
-                            <Box>
-                              <Stack
-                                direction="row"
-                                justifyContent={{
-                                  md: "flex-end",
-                                  xs: "space-between",
-                                }}
-                              >
-                                {" "}
-                                <LinearProgressWithLabel value={20} />
-                              </Stack>
-                            </Box>
-                          </Box>
-                        </Stack>
+            <div
+              style={{ background: "#242731", border: "0.1px solid gray" }}
+              class=" text-white w-[100%] p-6 rounded-lg mb-8 mt-10"
+            >
+              <div class="grid grid-cols-3 gap-4">
+                <div class="flex flex-col">
+                  <span class="text-sm">Total CopyTrade</span>
+                  <span class="text-lg font-semibold">$0.00</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm">Total Profit</span>
+                  <span class="text-lg font-semibold">$0.00</span>
+                </div>
+                <div class="flex justify-end items-center">
+                  <a
+                    href="/user/copy-traders"
+                    class="text-purple-500 hover:underline text-sm font-semibold"
+                  >
+                    CopyTrade Now →
+                  </a>
+                </div>
+              </div>
+            </div>
 
-                        <Stack
-                          sx={{
-                            height: "auto",
-                            padding: "10px",
-                            marginTop: { md: "", xs: "70px" },
-                          }}
-                          direction={{ md: "row", xs: "column" }}
-                          justifyContent="space-between"
-                          alignItems="center"
-                        >
-                          <Box
-                            sx={{
-                              width: { md: "45%", xs: "100%" },
-                              border: "0.1px solid gray",
-                              borderRadius: "10px",
-                              padding: "25px 15px",
-                              marginBottom: { md: "", xs: "10px" },
-                            }}
-                          >
-                            <Stack direction="row">
-                              <Box>
-                                <Typography
-                                  sx={{ color: "#808191", fontSize: "1.2em" }}
-                                >
-                                  Trades{" "}
-                                </Typography>
-                                <Typography sx={{ color: "white" }}>
-                                  $0.00
-                                </Typography>
-                              </Box>
-                            </Stack>
-                          </Box>{" "}
-                          <Box
-                            sx={{
-                              width: { md: "45%", xs: "100%" },
-                              border: "0.1px solid gray",
-                              borderRadius: "10px",
-                              padding: "25px 15px",
-                            }}
-                          >
-                            <Stack direction="row">
-                              <Box>
-                                <Typography
-                                  sx={{ color: "#808191", fontSize: "1.2em" }}
-                                >
-                                  Confidence{" "}
-                                </Typography>
-                                <Typography sx={{ color: "white" }}>
-                                  {active?.confidence}%
-                                </Typography>
-                              </Box>
-                            </Stack>
-                          </Box>{" "}
-                        </Stack>
-                      </Stack>
-                    </Box>
-                  </Box>
-                </>
-              )}
-            </Box>
+            <div
+              style={{ background: "#242731" }}
+              class=" text-white w-[100%] p-6 rounded-lg shadow-md"
+            >
+              <h2 class="text-lg font-semibold mb-4">History</h2>
+              {/* <!-- History Table --> */}
+              <div class="grid grid-cols-5 gap-2 text-center mt-4">
+                <div class="text-gray-400">Progress</div>
+                <div class="text-gray-400">Plan Name</div>
+                <div class="text-gray-400">Details</div>
+                <div class="text-gray-400">Amount</div>
+                <div class="text-gray-400">Start Date / Next Return</div>
+              </div>
+              {/* <!-- No Data Section --> */}
+              <div class="bg-gray-900 p-4 rounded-lg text-center">
+                <span class="flex flex-col items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-6 h-6 mb-2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9.75 9.75h-.008v.008h.008v-.008zm4.5 0h-.008v.008h.008v-.008zm-2.25 9v-3.75m0-3.75v-3.75m12 3.75c0 6.075-4.925 11-11 11S1 18.825 1 12.75C1 6.675 5.925 1.75 11.5 1.75S23 6.675 23 12.75zm-11.25 0a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                    />
+                  </svg>
+                  <span class="text-gray-400">Data not found</span>
+                </span>
+              </div>
+            </div>
           </Stack>
         </Box>
       </NavPage>

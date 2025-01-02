@@ -298,7 +298,7 @@ function page() {
                           fontSize: "1.2em",
                         }}
                       >
-                        ProfitMirow
+                        Profit Mirrow
                       </span>
                     </h1>
                     <h5 style={{ color: "#d9d6d6", fontSize: "0.9em" }}>

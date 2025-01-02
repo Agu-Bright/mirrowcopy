@@ -99,89 +99,100 @@ export default function Home() {
                 Expert Traders{" "}
               </Typography>
             </Box>
-            <Box className="w-[100%] mt-4">
-              <Typography>
+            <Box
+              className="w-[100%] mt-4"
+              sx={{
+                height: "75vh",
+                overflowY: "scroll",
+              }}
+            >
+              <Typography className="mb-8" sx={{ marginBottom: "15px" }}>
                 The Grin blockchain has presented significant technical
                 challenges
               </Typography>
 
-              {active === null && (
-                <>
-                  {loading && (
-                    <Box
-                      sx={{
-                        width: "100%",
-                        height: "70vh",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <CircularProgress size={20} sx={{ color: "white" }} />
-                    </Box>
-                  )}
-                  {!loading && traders.length === 0 && (
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: "100%",
-                      }}
-                    >
+              <Box sx={{ marginTop: "15px" }}>
+                {active === null && (
+                  <>
+                    {loading && (
                       <Box
                         sx={{
-                          width: "50%",
+                          width: "100%",
                           height: "70vh",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          flexDirection: "column",
                         }}
                       >
-                        <Image
-                          src="/img/empty.png"
-                          alt="empty"
-                          width={200}
-                          height={200}
-                        />
-                        <Typography className="text-white">
-                          You currently have not uploaded any trader
-                        </Typography>
-                        {session?.user?.role === "admin" && (
-                          <Button
-                            className="mt-8"
-                            onClick={() => router.push("/dashboard/create-trader")}
-                          >
-                            Create Trader
-                          </Button>
-                        )}
+                        <CircularProgress size={20} sx={{ color: "white" }} />
                       </Box>
-                    </Box>
-                  )}
-                  {traders.length > 0 && (
-                    <Box>
-                      <Box sx={{ width: "100%" }}>
-                        <Grid
-                          container
-                          rowSpacing={2}
-                          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                    )}
+                    {!loading && traders.length === 0 && (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: "50%",
+                            height: "70vh",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexDirection: "column",
+                          }}
                         >
-                          {traders.map((item) => (
-                            <Grid item xs={6} md={3}>
-                              <TraderCard
-                                key={item?._id}
-                                trader={item}
-                                setActive={setActive}
-                              />
-                            </Grid>
-                          ))}
-                        </Grid>
+                          <Image
+                            src="/img/empty.png"
+                            alt="empty"
+                            width={200}
+                            height={200}
+                          />
+                          <Typography className="text-white">
+                            You currently have not uploaded any trader
+                          </Typography>
+                          {session?.user?.role === "admin" && (
+                            <Button
+                              className="mt-8"
+                              onClick={() =>
+                                router.push("/dashboard/create-trader")
+                              }
+                            >
+                              Create Trader
+                            </Button>
+                          )}
+                        </Box>
                       </Box>
-                    </Box>
-                  )}
-                </>
-              )}
+                    )}
+                    {traders.length > 0 && (
+                      <Box>
+                        <Box sx={{ width: "100%" }}>
+                          <Grid
+                            container
+                            rowSpacing={2}
+                            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                          >
+                            {traders.map((item) => (
+                              <Grid item xs={6} md={3}>
+                                <TraderCard
+                                  key={item?._id}
+                                  trader={item}
+                                  setActive={setActive}
+                                />
+                              </Grid>
+                            ))}
+                          </Grid>
+                        </Box>
+                      </Box>
+                    )}
+                  </>
+                )}
+              </Box>
+
               {active && (
                 <>
                   <Stack direction="row" justifyContent="space-between">

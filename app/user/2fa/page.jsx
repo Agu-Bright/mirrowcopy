@@ -17,10 +17,7 @@ import TradingPairWidget from "@components/TradingPairWidget";
 import MyOrder from "@components/MyOrder";
 import Buy from "@components/Buy";
 import MarketNews from "@components/MarketNews";
-import TradingViewTicker from "./widget";
-import MarketTradesTable from "./table";
-import TradingDashboard from "./tradingDash";
-import OrderBook from "./orderBook";
+import TwoFactorAuth from "./designT";
 
 const Topic = ({ title, src }) => {
   return (
@@ -58,19 +55,7 @@ export default function Home() {
     return (
       <NavPage>
         <Box sx={{ height: "100%", width: "100%", paddingBottom: "15px" }}>
-          <Stack
-            direction={{ md: "row", xs: "column" }}
-            justifyContent="space-between"
-            sx={{ width: "100%" }}
-          >
-            <Box sx={{ width: "100%", height: "80vh", overflowY: "scroll" }}>
-              <TradingViewTicker />
-              <TradingDashboard />
-              <Box sx={{ width: "100", overflow: "hidden" }}>
-                <MarketTradesTable />
-              </Box>
-            </Box>
-          </Stack>
+          <TwoFactorAuth />
         </Box>
       </NavPage>
     );
