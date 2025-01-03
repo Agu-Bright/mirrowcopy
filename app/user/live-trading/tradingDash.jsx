@@ -38,9 +38,9 @@ const TradingDashboard = () => {
       >
         <h2 className="font-bold text-lg">Notice! Notice!! Notice!!!</h2>
         <p className="mt-2">
-          Hello <span className="font-bold">bright</span>, you are not eligible
-          to view livestream of ongoing trade. Kindly contact your trader or
-          support.
+          Hello <span className="font-bold">{session?.user?.name}</span>, you
+          are not eligible to view livestream of ongoing trade. Kindly contact
+          your trader or support.
         </p>
       </div>
 
