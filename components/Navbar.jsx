@@ -192,15 +192,15 @@ const Navbar = ({ fixed, type, data, topNav, title }) => {
           >
             <div className="container-fluid">
               <nav className="navbar navbar-expand-lg navbar-light">
-                {/* <Image
+                <Image
                   src="/img/logo1.png"
                   alt="logo"
                   width={120}
                   height={120}
-                /> */}
-                <Typography className="text-white font-extrabold">
+                />
+                {/* <Typography className="text-white font-extrabold">
                   Profit Mirrow
-                </Typography>
+                </Typography> */}
                 <IconButton
                   // style={{ border: "1px solid black" }}
                   onClick={() => setSideBar(true)}
